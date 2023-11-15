@@ -17,8 +17,6 @@ const db = mysql.createPool({
 })
 
 const getDevice = async (deviceId) => {
-    console.log("CODE: ", deviceId);
-
     try {
         var device = await new Promise((resolve, reject) => {
             db.query(`SELECT displays.id AS display_id, displays.name AS display_name, displays.description AS display_description, displays.code AS display_code, 
