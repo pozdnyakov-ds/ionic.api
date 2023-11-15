@@ -36,8 +36,6 @@ const getDevice = async (deviceId) => {
                 });
         })
 
-        console.log("data: ", device);
-
         if (!device) { 
             return;
         }
