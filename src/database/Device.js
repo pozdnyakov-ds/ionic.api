@@ -35,6 +35,9 @@ const getDevice = async (deviceId) => {
                     if (err) { reject(err)} else {resolve(data) }
                 });
         })
+
+        console.log("data: ", device);
+
         if (!device) { 
             return;
         }

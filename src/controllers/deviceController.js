@@ -8,8 +8,6 @@ const getDevice = async (req, res) => {
         return;
     }
     
-    console.log("deviceId: ", deviceId);
-
     const device = await deviceService.getDevice(deviceId);
     if (device && device.length) {
         res.setHeader('Access-Control-Allow-Origin', '*');
