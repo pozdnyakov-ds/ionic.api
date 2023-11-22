@@ -33,7 +33,12 @@ const registerDevice = (req, res) => {
         token
     );
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send({ status: 'OK', data: registeredDevice });
+    if (registeredDevice) {
+    	res.send({ status: 'OK', code: 200, data: registeredDevice });
+    } else {
+        res.send({ status: 'API Register error', code: 204, data: null });
+    }
+
 };
 
 module.exports = {
