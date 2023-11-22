@@ -18,7 +18,7 @@ const getDevice = async (req, res) => {
     }    
 };
 
-const registerDevice = (req, res) => {
+const registerDevice = async (req, res) => {
     const { device_id, token } = req.body;
 
     if (!device_id) {
@@ -27,7 +27,7 @@ const registerDevice = (req, res) => {
         return;
     }
 
-    const registeredDevice = deviceService.registerDevice(
+    const registeredDevice = await deviceService.registerDevice(
         device_id,
         token
     );
