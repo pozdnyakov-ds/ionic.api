@@ -6,9 +6,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: false
 }));
 app.use(bodyParser.json());
+
 app.use('/v1/device', v1DeviceRouter);
 
 app.listen(PORT, () => {

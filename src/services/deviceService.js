@@ -5,8 +5,8 @@ const getDevice = async (deviceId) => {
     return device;
 };
 
-const registerDevice = (deviceId, token) => {
-    const registeredDevice = Device.registerDevice(
+const registerDevice = async (deviceId, token) => {
+    const registeredDevice = await Device.registerDevice(
         deviceId,
         token
     );

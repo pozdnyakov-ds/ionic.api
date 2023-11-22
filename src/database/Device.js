@@ -47,6 +47,7 @@ const getDevice = async (deviceId) => {
 };
 
 const registerDevice = async (deviceId, token) => {
+
     var rowsUpdated = 0;
     try {
         var device = await new Promise((resolve, reject) => {
@@ -54,18 +55,19 @@ const registerDevice = async (deviceId, token) => {
                 if (err) { reject(err) } 
 		        else { 
                     resolve(data) 
-                    rowsUpdated = data.changedRows;
+                    rowsUpdated = data.affectedRows;
                 }
             });
         })
+        //console.log("DEVICE RESULT: ", rowsUpdated);
 
         if (!device) { 
             return 0;
         }
-        return rowsUpdated;	//return device
+        return rowsUpdated;	
 
     } catch (e) {
-        return;
+        return 0;
     }
 };
 
