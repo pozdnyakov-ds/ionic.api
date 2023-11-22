@@ -60,7 +60,7 @@ const registerDevice = async (deviceId, token) => {
         })
 
         if (!device) { 
-            return;
+            return 0;
         }
         return rowsUpdated;	//return device
 
