@@ -23,7 +23,7 @@ const registerDevice = (req, res) => {
 
     if (!device_id) {
         res.setHeader('Access-Control-Allow-Origin', '*');
-        res.send({ status: 'Error', code: 204, data: req.body });
+        res.send({ status: 'Error', code: 204, data: JSON.stringify(req.body) });
         return;
     }
 
