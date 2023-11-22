@@ -5,10 +5,10 @@ const getDevice = async (deviceId) => {
     return device;
 };
 
-const registerDevice = (deviceId, changes) => {
+const registerDevice = (deviceId, token) => {
     const registeredDevice = Device.registerDevice(
         deviceId,
-        changes
+        token
     );
     return registeredDevice;
 };

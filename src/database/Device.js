@@ -46,24 +46,24 @@ const getDevice = async (deviceId) => {
     }
 };
 
-const registerDevice = (deviceId, changes) => {
-    // const indexForUpdate = DB.devices.findIndex(
-    //     (device) => device.id === deviceId
-    // );
-    // if (indexForUpdate === -1) {
-    //     return;
-    // }
-    // const registeredDevice = {
-    //     ...DB.devices[indexForUpdate],
-    //     ...changes,
-    //     registeredAt: new Date().toLocaleString('ru-RU', {
-    //         timeZone: 'UTC+3',
-    //     }),
-    // };
-    // DB.devices[indexForUpdate] = registeredDevice;
-    // saveToDatabase(DB);
-    // return registeredDevice;
-    return;
+const registerDevice = async (deviceId, token) => {
+    try {
+        var device = await new Promise((resolve, reject) => {
+            db.query(`UPDATE displays
+		SET token=?
+                WHERE id=?`, [token, deviceId], (err, data) => {
+                    if (err) { reject(err)} else {resolve(data) }
+                });
+        })
+
+        if (!device) { 
+            return;
+        }
+        return device;
+
+    } catch (e) {
+        return;
+    }
 };
 
 module.exports = {

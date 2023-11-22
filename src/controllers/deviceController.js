@@ -19,16 +19,18 @@ const getDevice = async (req, res) => {
 };
 
 const registerDevice = (req, res) => {
-    const {
-        body,
-        params: { deviceId },
-    } = req;
-    if (!deviceId) {
+    const { body } = req;
+    const { device_id, token } = req.body;
+
+    if (!device_id) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.send({ status: 'Error', data: null });
         return;
     }
-    const registeredDevice = deviceService.registeredDevice(
-        deviceId,
-        body
+
+    const registeredDevice = deviceService.registerDevice(
+        device_id,
+        token
     );
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.send({ status: 'OK', data: registeredDevice });
