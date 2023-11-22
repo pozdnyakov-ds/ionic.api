@@ -19,12 +19,11 @@ const getDevice = async (req, res) => {
 };
 
 const registerDevice = (req, res) => {
-    const { body } = req;
     const { device_id, token } = req.body;
 
     if (!device_id) {
         res.setHeader('Access-Control-Allow-Origin', '*');
-        res.send({ status: 'Error', data: null });
+        res.send({ status: 'Error', code: 204, data: null });
         return;
     }
 
@@ -34,9 +33,9 @@ const registerDevice = (req, res) => {
     );
     res.setHeader('Access-Control-Allow-Origin', '*');
     if (registeredDevice) {
-    	res.send({ status: 'OK+', code: 200, data: registeredDevice });
+    	res.send({ status: 'OK', code: 200, data: registeredDevice });
     } else {
-        res.send({ status: 'API Register error', code: 204, data: null });
+        res.send({ status: 'API register error', code: 204, data: 0 });
     }
 
 };
