@@ -50,13 +50,13 @@ const registerDevice = async (deviceId, token) => {
     var rowsUpdated = 0;
     try {
         var device = await new Promise((resolve, reject) => {
-            db.query(`UPDATE displays
-		SET token=?
-                WHERE id=?`, [token, deviceId], (err, data) => {
-                    if (err) { reject(err)} 
-		    else {resolve(data) }
-		    rowsUpdated = data.changedRows;
-                });
+            db.query(`UPDATE displays SET token=? WHERE id=?`, [token, deviceId], (err, data) => {
+                if (err) { reject(err) } 
+		        else { 
+                    resolve(data) 
+                    rowsUpdated = data.changedRows;
+                }
+            });
         })
 
         if (!device) { 
